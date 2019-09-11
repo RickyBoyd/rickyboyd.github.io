@@ -6,9 +6,7 @@ permalink: /about/
 
 Hi, I'm Ricky. I'm a software engineer living and working in London.
 
-This is a personal blog I have created in order to do write ups on some of the software engineering related books I have been reading. The purpose is to help me understand and digest the information through writing and also to serve as a sort of personal archive of my takeaways from these books.
-
-I may also make some posts about some learnings from personal projects I have been working on. These will probably mostly be about rust but could be about anything that takes my fancy really.
+This is a personal blog I've created for the purpose of posting about some projects and books I have been reading. I've noticed that I often read a good book and forget most of it which makes it pointless. So, I am going to start doing write ups and posting them here to help me digest the information and to serve as a personal information vault.
 
 ### Contact me
 
