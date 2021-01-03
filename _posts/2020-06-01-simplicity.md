@@ -31,13 +31,13 @@ Software ultimately needs to change over time due to changing requirements. This
 
 ## Simplicity Is Reliability
 
-What do you do when a problem is found in your software? How do you debug it? We have a myriad of tools today around tracing, metrics, and logging in order to increase observability in our systems. But the more the developers really truly have an understanding of the software they build and their interactions the drastically simpler it is to resolve problems. It's also much easier to avoid problems before they ever occur as unknown and unforeseen consequences of changes are far less likely. Therefore if we want to build reliable systems we should be aiming to build software as simple as possible.
+What do you do when a problem is found in your software? How do you debug it? We have a myriad of tools today around tracing, metrics, and logging to increase observability in our systems. But the more the developers really truly have an understanding of the software they build and their interactions the drastically simpler it is to resolve problems. It's also much easier to avoid problems before they ever occur as unknown and unforeseen consequences of changes are far less likely. Therefore if we want to build reliable systems we should be aiming to build software as simple as possible.
 
 ## Sources of Accidental Complexity & Enemies of Simplicity
 
 ### Basic Coupling
 
-The unnecessary coupling can easily appear at many levels of software development. Unnecessary coupling to a library, unnecessary coupling to other services, unnecessary coupling to certain technologies, and unnecessary coupling to other modules within our own program. I often see developers inadvertently coupling their software to other pieces of software in a way that could be avoided with a little more work. Techniques such as dependency injection are often the solution to these problems. A great advantage of decoupling is it often makes the individual components much easier to test and reason about on their own. We can then compose them together to get our desired behaviours.
+Unnecessary coupling can easily appear at many levels of software development. Unnecessary coupling to a library, unnecessary coupling to other services, unnecessary coupling to certain technologies, and unnecessary coupling to other modules within our own program. I often see developers inadvertently coupling their software to other pieces of software in a way that could be avoided with a little more work. Techniques such as dependency injection are often the solution to these problems. A great advantage of decoupling is it often makes the individual components much easier to test and reason about on their own. We can then compose them together to get our desired behaviours.
 
 ### Object-Oriented Programming Overuse
 
