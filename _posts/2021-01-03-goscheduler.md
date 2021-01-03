@@ -3,15 +3,13 @@ layout: post
 title: Introduction To The Go Runtime Scheduler
 ---
 
-## Introduction
-
 The Go runtime scheduler is at the heart of what gives Go great performance when writing programs that are highly I/O bound. Tens or even hundreds of thousands of Goroutines can be run concurrently. It's not necessary to understand how the Go runtime scheduler works to take advantage of its power but it can certainly help to take further advantage. For instance, it's a commonplace misconception that the number of goroutines should be kept low for higher performance and that the number of goroutines should be similar to the number of threads you may have in a multithreaded program but this is not the case. Let's dive into it.
 
-#### Goroutines
+# Goroutines
 
 A Goroutine is a light-weight process managed by the Go runtime which is compiled into every Go program. This means it's managed completely in userspace and not by the operating system. There many other names you may have heard of for this such as green threads or M:N threading. Many goroutines are typically mapped onto a much smaller set of operating system threads. In Go you could imagine the "N" in M:N threading to be a G.
 
-#### Goroutine Scheduler
+# Goroutine Scheduler
 
 The scheduling system in Go has three main components of its model, the processor (P), the goroutine (G) and the machine (M). Goroutines could be more accurately described as M:P:G threading rather than M:N threading due to having an intermediate abstraction for mapping userspace runtime threads (G) to real OS threads (M). The machine (M) is an operating system thread and may have one goroutine executing on it at once. The Go runtime manages a pool of Ms. A processor (P) is associated with a specific M. The number of Ps is set by the GOMAXPROCs environment variable which is normally set to be the number of CPUs available to minimise the amount of context switching needed between real threads by the OS, thus enabling higher utilisation. The P holds the state for deciding which G will be run on the M. The main mechanism for this is the local run queue (LRQ) that each P holds. When deciding which G to run next on the M the P will check which G is next in the LRQ. There is also a global run queue (GRQ). Every 1/61 ticks of the scheduler the P will schedule the next G on the GRQ to run on the M. This is done to ensure fairness.
 
@@ -23,7 +21,7 @@ When a G is executing on an M there are several mechanisms that will stop it fro
 
 When a blocking syscall occurs the processor will become detached from the machine and will be attached to a new machine. The blocking goroutine stays executing on the machine. Once the syscall is complete the G will be detached from the M and placed back onto the LRQ of the P it originated from and the M will be added to the list of free Ms. The G may fail to be added back to the old P, in which case the runtime will try and add the G to the LRQ of any idle P. If this fails it will be added to the GRQ.
 
-#### The Network Poller
+# The Network Poller
 
 The network poller (netpoller) handles any non-blocking IO. Goroutines are passed the netpoller which manages a set of file descriptors to be "polled" for readiness. The mechanism behind the polling is operating specific and the netpoller logic is also mostly OS specific.
 
@@ -32,6 +30,6 @@ The netpoller runs as a background thread that calls the underlying OS periodica
 The netpoller uses different mechanisms depending on which OS it's running on. On Linux, the go runtime uses the "epoll" API. The "epoll" API provided by Linux is described as the "I/O event notification facility" by the Linux man-pages. On MacOS the go runtime uses a similar facility provided called "kqueue". How these operating system APIs work and how the Go runtime integrates with them is out of scope for this article.
 
 
-#### Summary
+# Summary
 
 The Go runtime scheduler is designed in a way that the scheduling decisions can be distributed among a set of what we call "processors". This is done to ensure the scheduler can scale to a large number of CPUs. We have also seen that the scheduler employs a number of mechanisms to ensure fairness including work-stealing, pre-emption and running Gs from the GRQ periodically instead of always running from the LRQ. The purpose of such a userspace threading mechanism is to maximise CPU utilisiation for massively concurrent workloads. The Go runtime's handling of nonblocking IO allows for a large number of Gs to be waiting on network calls while still allowing the CPUs to be used for Gs which can execute work. The combination of all these features is a large factor in the rise of Go's use in the Cloud Native space where programs often need to handle a large number of incoming and outgoing network connections.
