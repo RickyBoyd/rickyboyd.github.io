@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi, I'm Ricky. I'm a software engineer living and working in London.
 
-This is a personal blog I've created for the purpose of posting about some projects and books I have been reading. I've noticed that I often read a good book and forget most of it which makes it pointless. So, I am going to start doing write ups and posting them here to help me digest the information and to serve as a personal information vault.
+Posts on this blog will be focussed purely on the realm of software and software engineering. Writing about a topic can help to really understand it as well as help spot gaps in knowledge. I have also found that writing helps with tremendously with retaining information.
 
 ### Contact me
 
