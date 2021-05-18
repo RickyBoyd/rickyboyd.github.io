@@ -10,4 +10,4 @@ Posts on this blog will be focussed purely on the realm of software and software
 
 ### Contact me
 
-ricky at rickybody.dev
+ricky at rickyboyd.dev
