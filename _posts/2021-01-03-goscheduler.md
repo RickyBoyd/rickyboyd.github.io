@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction To The Go Runtime Scheduler
+title: Introduction to the Go Runtime Scheduler
 ---
 
 The Go runtime scheduler is at the heart of what gives Go great performance when writing programs that are highly I/O bound. Tens or even hundreds of thousands of Goroutines can be run concurrently. It's not necessary to understand how the Go Runtime Scheduler works to take advantage of its power but it can certainly help to take further advantage. For instance, it's a commonplace misconception that the number of goroutines should be kept low for higher performance and that the number of goroutines should be similar to the number of threads you may have in a multithreaded program, but this is not the case. Let's dive into it.
