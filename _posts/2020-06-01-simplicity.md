@@ -3,9 +3,9 @@ layout: post
 title: Importance of Simplicity 
 ---
 
-# Why Simplicity Matters And How To Achieve It
-
 ## Simplicity
+
+The following post will be a bit of a rant after encountering some very poorly thought through systems and after having listened to a number of Rich Hickey talks.
 
 The more software I write and read the more convinced I become that simplicity should be the number one goal
 for any software engineer when creating software. This is not my own original idea by any means. It's mostly inspired by the talks and works of Rich Hickey which strike a note with my own experiences.
